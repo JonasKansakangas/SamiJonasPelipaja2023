@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+
+    public bool DebugMode = false;
     public List<GameObject> LevelPrefabs = new List<GameObject>();
     float _offset = 0;
     private float _cameraLeftCorner;
@@ -50,7 +52,7 @@ public class LevelGenerator : MonoBehaviour
     /// </summary>
     private void InstantiateNewLevelObject()
     {
-        GameObject go = LevelPrefabs[Random.Range(0, LevelPrefabs.Count)];
+        GameObject go = LevelPrefabs[DebugMode ? 0 : Random.Range(0, LevelPrefabs.Count)];
         GameObject.Instantiate(go, new Vector3(_offset, _cameraLeftCorner-0.32f, 0), Quaternion.identity);
         _offset += GetMaxBounds(go).size.x;
     }
