@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &643665881
 Transform:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4804ff59013efcb4a92828e07f17565a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugMode: 1
+  DebugMode: 0
   LevelPrefabs:
   - {fileID: 8216647952278869104, guid: 747d0281f3915f44a870d5b6c40f3fc7, type: 3}
   - {fileID: 8216647952278869104, guid: 79b2257a2eeb1234dbcaf23cf9c01c70, type: 3}
