@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8162517b6ec2309499f99e303b29f146, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.7619173, g: 0.78572065, b: 0.73050946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5984217203665953836, guid: 58937b5a9d9ef6140b9cd45fc66efc11, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6332415567332927643, guid: 58937b5a9d9ef6140b9cd45fc66efc11, type: 3}
       propertyPath: m_Name
       value: Player
@@ -164,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6332415567332927646, guid: 58937b5a9d9ef6140b9cd45fc66efc11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6332415567332927646, guid: 58937b5a9d9ef6140b9cd45fc66efc11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -220,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &643665881
 Transform:
   m_ObjectHideFlags: 0
@@ -313,7 +317,7 @@ Camera:
   m_GameObject: {fileID: 1379631096}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -408,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4804ff59013efcb4a92828e07f17565a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugMode: 1
   LevelPrefabs:
   - {fileID: 8216647952278869104, guid: 747d0281f3915f44a870d5b6c40f3fc7, type: 3}
   - {fileID: 8216647952278869104, guid: 79b2257a2eeb1234dbcaf23cf9c01c70, type: 3}

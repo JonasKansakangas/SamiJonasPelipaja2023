@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8853865832520179225}
   - component: {fileID: 1185352799346133684}
   - component: {fileID: -5294423287806106794}
+  - component: {fileID: 5999910546761873247}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +98,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661959439fd69f24d958fc806849438b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 10
+--- !u!58 &5999910546761873247
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905231613637235662}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
