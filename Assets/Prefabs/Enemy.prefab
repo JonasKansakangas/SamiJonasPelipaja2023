@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 905231613637235662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.14472403, y: 3.0464973, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  EnemyExplosion: {fileID: 7188180035275214105, guid: 9641d601f40c7c846944455d119cb0c1, type: 3}
 --- !u!58 &5999910546761873247
 CircleCollider2D:
   m_ObjectHideFlags: 0

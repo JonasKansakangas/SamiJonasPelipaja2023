@@ -6,10 +6,12 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
 
+    #region Members
     public bool DebugMode = false;
     public List<GameObject> LevelPrefabs = new List<GameObject>();
     float _offset = 0;
     private float _cameraLeftCorner;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class LevelGenerator : MonoBehaviour
         //Generate 10 sets to begin with
         for(int i = 0; i < 10; i++)
         {
-            InstantiateNewLevelObject();
+            InstantiateNewLevelObject(i < 3 ? 0 : (int?)null);
            
         }
     }
@@ -50,9 +52,9 @@ public class LevelGenerator : MonoBehaviour
     /// <summary>
     /// Instantiate a level prefab at the correct position
     /// </summary>
-    private void InstantiateNewLevelObject()
+    private void InstantiateNewLevelObject(int? index = null)
     {
-        GameObject go = LevelPrefabs[DebugMode ? 0 : Random.Range(0, LevelPrefabs.Count)];
+        GameObject go = LevelPrefabs[DebugMode ? 0 : index.HasValue ? index.Value : Random.Range(0, LevelPrefabs.Count)];
         GameObject.Instantiate(go, new Vector3(_offset, _cameraLeftCorner-0.32f, 0), Quaternion.identity);
         _offset += GetMaxBounds(go).size.x;
     }

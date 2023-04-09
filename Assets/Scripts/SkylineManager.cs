@@ -13,7 +13,14 @@ public class SkylineManager : MonoBehaviour
 
     private Vector3 nextPosition;
     private Queue<Transform> objectQueue;
-    
+
+    GameObject backgroundCamera;
+    float backgroundCameraDistanceTravelled = 0;
+
+    private void Awake()
+    {
+        backgroundCamera = GameObject.Find("BackgroundCamera");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,34 +28,26 @@ public class SkylineManager : MonoBehaviour
         objectQueue = new Queue<Transform>(numberOfObjects);
         for (int i = 0; i < numberOfObjects; i++)
         {
-            objectQueue.Enqueue((Transform)Instantiate(prefab));
+            objectQueue.Enqueue(Instantiate(prefab));
         }
         nextPosition = startPosition;
         for (int i = 0; i < numberOfObjects; i++)
         {
             Recycle();
         }
-        //{
-        //    Transform o = (Transform) Instantiate(prefab);
-        //    o.localPosition = nextPosition;
-        //    nextPosition.x += o.localScale.x;
-        //    objectQueue.Enqueue(o);
-        //}
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (objectQueue.Peek().localPosition.x + recycleOffset < PlayerMovement.distanceTraveled)
+        backgroundCameraDistanceTravelled = backgroundCamera.transform.position.x;
+
+        if (objectQueue.Peek().position.x + recycleOffset < backgroundCameraDistanceTravelled)
         {
             Recycle();
         }
-        //{
-        //    Transform o = objectQueue.Dequeue();
-        //    o.localPosition = nextPosition;
-        //    nextPosition.x += o.localScale.x;
-        //    objectQueue.Enqueue(o);
-        //}
+       
     }
 
     private void Recycle()

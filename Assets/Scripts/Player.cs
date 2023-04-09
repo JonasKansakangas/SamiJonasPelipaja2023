@@ -6,44 +6,94 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
+    #region Members
     private Rigidbody2D _rigidbody;
-
     public static Player Instance;
 
+    public float Speed = 1;
+
+    float jumpForceMultiplier = 10;
+
+    float minJumpForce = 4;
+    float maxJumpForce = 10;
+    float jumpForce = 0;
+
+    // Bit shift the index of the layer (7) to get a bit mask
+    int layerMask = 1 << 7;
+    #endregion
+
+
+    /// <summary>
+    /// Returns true if player is touching ground
+    /// </summary>
+    bool Grounded
+    {
+        get
+        {
+            return Physics2D.Raycast(transform.position, Vector3.down, 1, layerMask).transform != null;
+        }
+    }
+    
     public void Awake()
     {
+        layerMask = ~layerMask;
         Instance = this;
     }
+
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-       // _rigidbody.AddForce(new Vector2(1, 0), ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonUp("Jump"))
         {
-            _rigidbody.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
-        }
-    }
+            if (Grounded)
+            {
+                _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                jumpForce = minJumpForce;
+            }
 
-    private void FixedUpdate()
-    {
-        transform.Translate(new Vector3(0.05f, 0, 0));
-       // _rigidbody.MovePosition(transform.position + (new Vector3(1, 0, 0)*Time.deltaTime));
-       //_rigidbody.velocity = new Vector2(
+        }
+
+        if (Input.GetButton("Jump") && Grounded)
+        {
+            jumpForce += jumpForceMultiplier * Time.deltaTime;
+            if (jumpForce >= maxJumpForce)
+                jumpForce = maxJumpForce;
+        }
+        else
+        {
+            jumpForce = minJumpForce;
+        }
+        transform.Translate(new Vector3(Speed * Time.deltaTime, 0, 0));
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Spike" || collision.gameObject.tag == "Enemy")
         {
-            //Game over
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameOver();
+
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        GameOver();
+    }
+
+    /// <summary>
+    /// Game over logic here
+    /// </summary>
+    void GameOver()
+    {
+        //Game over
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

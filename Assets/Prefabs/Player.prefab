@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6332415567332927646}
   - component: {fileID: 6332415567332927645}
-  - component: {fileID: 6332415567332927644}
   - component: {fileID: 7785993554680129806}
   - component: {fileID: 1989442233837406207}
   m_Layer: 0
@@ -172,27 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6332415567332927644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6332415567332927643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0488eb96cc4b2843831c41163c1cafd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: -400
-  velocity: {x: 0, y: 0}
-  jumpVelocity: 50
-  groundHeight: 10
-  isGrounded: 0
-  isHoldingJump: 0
-  maxHoldJumpTime: 0.27
-  holdJumpTimer: 0.04
-  jumpGroundTreshhold: 3
 --- !u!50 &7785993554680129806
 Rigidbody2D:
   serializedVersion: 4
