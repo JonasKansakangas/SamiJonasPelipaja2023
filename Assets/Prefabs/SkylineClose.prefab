@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2111331809118751109}
   - component: {fileID: 7624736749455931456}
   - component: {fileID: 7760031223092955674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkylineClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}

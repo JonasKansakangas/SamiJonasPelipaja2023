@@ -5,18 +5,16 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemy;
-    List<GameObject> spawnedEnemies;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnEnemy());
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-    }
-
+    /// <summary>
+    /// Spawn a new enemy every 5 seconds
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SpawnEnemy()
     {
         while (true)

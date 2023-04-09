@@ -5,11 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Shield : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -24,6 +20,9 @@ public class Shield : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-            Destroy(collision.gameObject);
+        {
+            (collision.GetComponent<Enemy>()).Die();
+
+        }
     }
 }

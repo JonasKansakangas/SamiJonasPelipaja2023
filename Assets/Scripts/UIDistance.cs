@@ -5,17 +5,12 @@ using TMPro;
 
 public class UIDistance : MonoBehaviour
 {
-
+    #region Members
     public float timer;
     public TextMeshProUGUI distanceUI;
-
     private float distance;
-    
-    void Start()
-    {
-        
-    }
-    
+    #endregion
+
     void Update()
     {
         distanceUI.text = "Time Survived: " + distance.ToString("F2");

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8940369029855970784}
   - component: {fileID: 8951167823662391912}
   - component: {fileID: 4478181565428131657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkylineFar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

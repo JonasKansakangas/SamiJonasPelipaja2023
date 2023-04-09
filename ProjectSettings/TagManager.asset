@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spike
   - Enemy
+  - LevelGeneratorTrigger
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Background
+  - Player
   - 
   - 
   - 

@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    #region Properties
+    #region Members
     public float Speed = 1000;
+    public GameObject EnemyExplosion;
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         //Move towards the player
-    }
-    private void FixedUpdate()
-    {
         transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, Speed * Time.deltaTime);
 
+    }
+
+    /// <summary>
+    /// Kill the enemiy and spawn an explosion
+    /// </summary>
+    public void Die()
+    {
+        GameObject.Destroy(GameObject.Instantiate(EnemyExplosion, transform.position, Quaternion.identity), 5);
+        Destroy(this.gameObject);
     }
 }
