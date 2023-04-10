@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     // Bit shift the index of the layer (7) to get a bit mask
     int layerMask = 1 << 7;
     #endregion
+    [SerializeField] GameOverManager gameOverManager;
 
 
     /// <summary>
@@ -78,22 +80,24 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Spike" || collision.gameObject.tag == "Enemy")
         {
-            GameOver();
+            Debug.Log("Game Over");
 
-        }
-    }
+            gameOverManager.SetGameOver();
 
-    private void OnBecameInvisible()
-    {
-        GameOver();
-    }
-
-    /// <summary>
-    /// Game over logic here
-    /// </summary>
-    void GameOver()
-    {
-        //Game over
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+            Destroy(gameObject);        }
+        }    
 }
+
+    //private void OnBecameInvisible()
+    //{
+    //    GameOver();
+    //}
+
+    ///// <summary>
+    ///// Game over logic here
+    ///// </summary>
+    //void GameOver()
+    //{
+    //    //Game over
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //}
