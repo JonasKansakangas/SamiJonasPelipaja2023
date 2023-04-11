@@ -9,7 +9,7 @@ public class LevelGenerator : MonoBehaviour
     #region Members
     public bool DebugMode = false;
     public List<GameObject> LevelPrefabs = new List<GameObject>();
-    float _offset = 0;
+    float _offset = -20;
     private float _cameraLeftCorner;
     #endregion
 
@@ -18,12 +18,16 @@ public class LevelGenerator : MonoBehaviour
     {
         //Get the left corner of camera (Level objects are instantiated here)
         _cameraLeftCorner = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)).y;
-        //Generate 10 sets to begin with
-        for(int i = 0; i < 10; i++)
+
+
+
+        //Generate 10 "real" pieces
+        for (int i = 0; i < 20; i++)
         {
-            InstantiateNewLevelObject(i < 3 ? 0 : (int?)null);
-           
+            InstantiateNewLevelObject(i < 6 ? 0 : (int?)null);
+
         }
+
     }
 
     //Get the bounds of the level prefab (so we can have different sized level objects and they still work)
