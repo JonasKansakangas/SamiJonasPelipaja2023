@@ -13,7 +13,7 @@ public class UIDistance : MonoBehaviour
 
     void Update()
     {
-        distanceUI.text = "Score: " + distance.ToString("F2");
+        distanceUI.text = "SCORE: " + distance.ToString("F2");
         timer += Time.deltaTime;
 
         distance += Time.deltaTime;
