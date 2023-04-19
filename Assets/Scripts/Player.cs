@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     public float Speed = 1;
+    public float PlayerSpeedUpSpeed = 1.0f;
 
-    float jumpForceMultiplier = 10;
+    float jumpForce = 4;
+    public int MaxAirTimeSeconds = 5;
+    private float currentAirTime = 0;
+    private bool canFly = true;
 
-    float minJumpForce = 4;
-    float maxJumpForce = 10;
-    float jumpForce = 0;
 
     // Bit shift the index of the layer (7) to get a bit mask
     int layerMask = 1 << 7;
@@ -52,27 +53,46 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp("Jump"))
-        {
-            if (Grounded)
-            {
-                _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                jumpForce = minJumpForce;
-            }
+        /* if (Input.GetButtonUp("Jump"))
+         {
+             if (Grounded)
+             {
+                 _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                 jumpForce = minJumpForce;
+             }
 
-        }
+         }
 
-        if (Input.GetButton("Jump") && Grounded)
+         if (Input.GetButton("Jump") && Grounded)
+         {
+             jumpForce += jumpForceMultiplier * Time.deltaTime;
+             if (jumpForce >= maxJumpForce)
+                 jumpForce = maxJumpForce;
+         }
+         else
+         {
+             jumpForce = minJumpForce;
+         }*/
+
+        if (Input.GetButton("Jump") && canFly)
         {
-            jumpForce += jumpForceMultiplier * Time.deltaTime;
-            if (jumpForce >= maxJumpForce)
-                jumpForce = maxJumpForce;
-        }
-        else
-        {
-            jumpForce = minJumpForce;
+            _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+
         }
         transform.Translate(new Vector3(Speed * Time.deltaTime, 0, 0));
+        Speed += (PlayerSpeedUpSpeed * Time.deltaTime);
+
+        if (!Grounded)
+            currentAirTime += Time.deltaTime;
+        else
+        {
+            canFly = true;
+            currentAirTime = 0;
+
+        }
+
+        if (currentAirTime >= MaxAirTimeSeconds)
+            canFly = false;
 
     }
 

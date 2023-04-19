@@ -1201,6 +1201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
+  PlayerSpeedUpSpeed: 0.05
+  MaxAirTimeSeconds: 2
   gameOverManager: {fileID: 1564235682}
 --- !u!1 &1023865854
 GameObject:
@@ -1612,7 +1614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraVelocity: 2
   player: {fileID: 788637171}
-  followPlayer: 0
+  followPlayer: 1
 --- !u!1 &1429473193
 GameObject:
   m_ObjectHideFlags: 0

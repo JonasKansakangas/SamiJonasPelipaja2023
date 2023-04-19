@@ -25,6 +25,6 @@ public class CameraScript : MonoBehaviour
         {
             transform.position = transform.position + (new Vector3(cameraVelocity * Time.deltaTime, 0,0));
         }
-
+        cameraVelocity += (Player.Instance.PlayerSpeedUpSpeed * Time.deltaTime);
     }
 }
