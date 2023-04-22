@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public float Speed = 1;
     public float PlayerSpeedUpSpeed = 1.0f;
 
-    float jumpForce = 4;
+    float jumpForce = 2000;
     public int MaxAirTimeSeconds = 5;
     private float currentAirTime = 0;
     private bool canFly = true;
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Jump") && canFly)
         {
-            _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+            _rigidbody.AddForce(new Vector2(0, jumpForce*Time.deltaTime), ForceMode2D.Force);
 
         }
         transform.Translate(new Vector3(Speed * Time.deltaTime, 0, 0));
