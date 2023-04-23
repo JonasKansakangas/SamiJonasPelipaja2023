@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    #region Members
     public GameObject enemy;
+    #endregion;
+
+    #region Methods
     // Start is called before the first frame update
     void Start()
     {
@@ -24,4 +28,5 @@ public class EnemySpawner : MonoBehaviour
         }
 
     }
+    #endregion
 }

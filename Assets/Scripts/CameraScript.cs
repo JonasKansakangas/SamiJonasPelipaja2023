@@ -11,6 +11,7 @@ public class CameraScript : MonoBehaviour
     #endregion
 
 
+    #region Methods
     // Update is called once per frame
     void Update()
     {
@@ -27,4 +28,5 @@ public class CameraScript : MonoBehaviour
         }
         cameraVelocity += (Player.Instance.PlayerSpeedUpSpeed * Time.deltaTime);
     }
+    #endregion
 }

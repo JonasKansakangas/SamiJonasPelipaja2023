@@ -10,12 +10,14 @@ public class Enemy : MonoBehaviour
     public GameObject EnemyExplosion;
     #endregion
 
+
+    #region Methods
     // Update is called once per frame
     void Update()
     {
         //Move towards the player
         if(Player.Instance != null)
-        transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, (Speed+Player.Instance.Speed) * Time.deltaTime);
 
     }
 
@@ -27,4 +29,6 @@ public class Enemy : MonoBehaviour
         GameObject.Destroy(GameObject.Instantiate(EnemyExplosion, transform.position, Quaternion.identity), 5);
         Destroy(this.gameObject);
     }
+
+    #endregion
 }

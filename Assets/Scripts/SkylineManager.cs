@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkylineManager : MonoBehaviour
 {
 
+    #region Members
     public Transform prefab;
     public int numberOfObjects;
     public float recycleOffset;
@@ -17,6 +18,9 @@ public class SkylineManager : MonoBehaviour
     GameObject backgroundCamera;
     float backgroundCameraDistanceTravelled = 0;
 
+    #endregion
+
+    #region Methods
     private void Awake()
     {
         backgroundCamera = GameObject.Find("BackgroundCamera");
@@ -35,7 +39,7 @@ public class SkylineManager : MonoBehaviour
         {
             Recycle();
         }
-     
+
     }
 
     // Update is called once per frame
@@ -47,7 +51,7 @@ public class SkylineManager : MonoBehaviour
         {
             Recycle();
         }
-       
+
     }
 
     private void Recycle()
@@ -67,4 +71,6 @@ public class SkylineManager : MonoBehaviour
         nextPosition.x += scale.x;
         objectQueue.Enqueue(o);
     }
+
+    #endregion
 }

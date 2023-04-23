@@ -11,6 +11,7 @@ public class UIDistance : MonoBehaviour
     private float distance;
     #endregion
 
+    #region Methods
     void Update()
     {
         distanceUI.text = "SCORE: " + distance.ToString("F2");
@@ -18,4 +19,5 @@ public class UIDistance : MonoBehaviour
 
         distance += Time.deltaTime;
     }
+    #endregion
 }

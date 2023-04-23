@@ -19,13 +19,10 @@ public class LevelGenerator : MonoBehaviour
         //Get the left corner of camera (Level objects are instantiated here)
         _cameraLeftCorner = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)).y;
 
-
-
         //Generate 10 "real" pieces
         for (int i = 0; i < 20; i++)
         {
             InstantiateNewLevelObject(i < 6 ? 0 : (int?)null);
-
         }
 
     }

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    /// <summary>
+    /// Starts a new game
+    /// </summary>
     public void PlayGame()
     {
         Time.timeScale = 1;
@@ -12,6 +15,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Quits the game
+    /// </summary>
     public void QuitGame() 
     {
         Debug.Log("QUIT");

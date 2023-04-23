@@ -22,10 +22,10 @@ public class Player : MonoBehaviour
 
     // Bit shift the index of the layer (7) to get a bit mask
     int layerMask = 1 << 7;
-    #endregion
     [SerializeField] GameOverManager gameOverManager;
+    #endregion
 
-
+    #region Properties
     /// <summary>
     /// Returns true if player is touching ground
     /// </summary>
@@ -36,13 +36,15 @@ public class Player : MonoBehaviour
             return Physics2D.Raycast(transform.position, Vector3.down, 1, layerMask).transform != null;
         }
     }
-    
+
+    #endregion
+
+    #region Methods
     public void Awake()
     {
         layerMask = ~layerMask;
         Instance = this;
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -53,27 +55,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* if (Input.GetButtonUp("Jump"))
-         {
-             if (Grounded)
-             {
-                 _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                 jumpForce = minJumpForce;
-             }
-
-         }
-
-         if (Input.GetButton("Jump") && Grounded)
-         {
-             jumpForce += jumpForceMultiplier * Time.deltaTime;
-             if (jumpForce >= maxJumpForce)
-                 jumpForce = maxJumpForce;
-         }
-         else
-         {
-             jumpForce = minJumpForce;
-         }*/
-
         if (Input.GetButton("Jump") && canFly)
         {
             _rigidbody.AddForce(new Vector2(0, jumpForce*Time.deltaTime), ForceMode2D.Force);
@@ -83,14 +64,19 @@ public class Player : MonoBehaviour
         Speed += (PlayerSpeedUpSpeed * Time.deltaTime);
 
         if (!Grounded)
+        {
             currentAirTime += Time.deltaTime;
+            if(currentAirTime < MaxAirTimeSeconds)
+                Shield.Instance.SetSize((1 - (currentAirTime / MaxAirTimeSeconds)) * Shield.Instance.OriginalSize);
+
+        }
         else
         {
             canFly = true;
             currentAirTime = 0;
+            Shield.Instance.ResetSize();
 
         }
-
         if (currentAirTime >= MaxAirTimeSeconds)
             canFly = false;
 
@@ -98,26 +84,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //If the player touched an enemy or a spike
         if(collision.gameObject.tag == "Spike" || collision.gameObject.tag == "Enemy")
         {
+            //Show game over screen and destroy player
             Debug.Log("Game Over");
-
             gameOverManager.SetGameOver();
+            Destroy(gameObject);        
+        }
+        
+    }
+    #endregion
 
-            Destroy(gameObject);        }
-        }    
 }
 
-    //private void OnBecameInvisible()
-    //{
-    //    GameOver();
-    //}
 
-    ///// <summary>
-    ///// Game over logic here
-    ///// </summary>
-    //void GameOver()
-    //{
-    //    //Game over
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //}
